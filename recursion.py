@@ -15,7 +15,7 @@ def print_numbers_of_increase(n: int, x: int = 1) -> None:
 
 
 def function_ackerman(m: int, n: int) -> int:
-    """Вычисление функции Аккуермана"""
+    """Вычисление функции Аккермана"""
     if m == 0:
         return n + 1
     if n == 0 and m > 0:
