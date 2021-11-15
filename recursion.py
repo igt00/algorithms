@@ -1,47 +1,65 @@
-def factorial(x: int) -> int:
-    """Факториал числа"""
-    if x == 1:
+from typing import Optional, List
+
+
+def factorial(value: int) -> int:
+    """Get factorial by value"""
+    if value < 2:
         return 1
-    return x * factorial(x - 1)
+    return value * factorial(value - 1)
 
 
-def print_numbers_of_increase(n: int, x: int = 1) -> None:
-    """Вывести все числа по возрастанию от 1 до n"""
-    if x == n:
-        print(x)
-        return
+def print_numbers_of_increase(value: int, x: int = 1) -> None:
+    """Print all items between 1 and value"""
     print(x)
-    print_numbers_of_increase(n, x + 1)
+    if x == value:
+        return
+    print_numbers_of_increase(value, x + 1)
 
 
-def function_ackerman(m: int, n: int) -> int:
-    """Вычисление функции Аккермана"""
+def function_ackerman(m: int, n: int) -> Optional[int]:
+    """Get Ackerman function"""
     if m == 0:
         return n + 1
     if n == 0 and m > 0:
         return function_ackerman(m - 1, 1)
     if m > 0 and n > 0:
         return function_ackerman(m - 1, function_ackerman(m, n - 1))
+    return None
 
 
-def check_degree_of_two(x: int, additional_x: int = 1) -> bool:
-    """Проверить, является ли число степенью 2"""
-    if additional_x == x:
+def check_degree_of_two(value: int, additional_value: int = 1) -> bool:
+    """Check that value is degree of two"""
+    if additional_value == value:
         return True
-    if additional_x > x:
+    if additional_value > value:
         return False
-    return check_degree_of_two(x, additional_x * 2)
+    return check_degree_of_two(value, additional_value * 2)
 
 
-def amount_of_digits_of_number(x: int) -> int:
-    """Сумма цифр числа"""
-    if x < 10:
-        return x
-    return x % 10 + amount_of_digits_of_number(x // 10)
+def amount_of_digits_of_number(value: int) -> int:
+    """Get amount of digits by value"""
+    if value < 10:
+        return value
+    return value % 10 + amount_of_digits_of_number(value // 10)
 
 
-def amount_of_factorial_numbers(x: int) -> int:
-    """Найти сумму факториалов числа"""
-    if x == 1:
+def amount_of_factorial_number(value: int) -> int:
+    """Get amount of factorial by value"""
+    if value == 1:
         return 1
-    return factorial(x) + amount_of_factorial_numbers(x - 1)
+    return factorial(value) + amount_of_factorial_number(value - 1)
+
+
+def get_amount_elems_from_array(array: List[int]):
+    """Get amount of all elems from array"""
+    if not array:
+        return 0
+    return array[0] + get_amount_elems_from_array(array[1:])
+
+
+def get_max_elem_from_array(array: List[int]) -> int:
+    """Get max item from array"""
+    if len(array) == 2:
+        return array[0] if array[0] > array[1] else array[1]
+    sub_max: int = get_max_elem_from_array(array[1:])
+    return array[0] if array[0] > sub_max else sub_max

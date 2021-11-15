@@ -1,0 +1,9 @@
+graph = dict()
+graph[1] = [2, 3, 4, 5]
+graph[2] = [1, 3]
+graph[3] = [1, 6]
+graph[4] = [1]
+graph[5] = [1, 6, 7]
+graph[6] = []
+graph[7] = []
+graph[8] = []

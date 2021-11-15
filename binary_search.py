@@ -1,23 +1,25 @@
 from typing import List, Union, Optional
 
+from sorts.data import ArrayType
 
-def binary_search(sorted_list: List[Union[int, float]], searched_item: Union[int, float]) -> Optional[int]:
+
+def binary_search(sorted_array: ArrayType, seeking_item: Union[int, str]) -> Optional[int]:
     """
-    Алгоритм бинарного поиска
-    :param sorted_list: отсортированный список
-    :param searched_item: искомый элемент
-    :return: индекс искомого элемента или None
+    Binary search algorithm
+    :param sorted_array:
+    :param seeking_item: Seeking item in array
+    :return: index of seeking item in array or None
     """
     start_index: int = 0
-    end_index: int = len(sorted_list) - 1
+    end_index: int = len(sorted_array) - 1
 
     while start_index <= end_index:
         middle_index: int = (start_index + end_index) // 2
-        middle_item = sorted_list[middle_index]
+        middle_item = sorted_array[middle_index]
 
-        if middle_item == searched_item:
+        if middle_item == seeking_item:
             return middle_index
-        if middle_item > searched_item:
+        if middle_item > seeking_item:
             end_index = middle_index - 1
         else:
             start_index = middle_index + 1
